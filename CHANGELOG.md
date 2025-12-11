@@ -55,7 +55,7 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [Unreleased]
 
-### Planejado
+### Planned
 - [ ] Tema escuro/claro
 - [ ] Atalhos de teclado customizáveis
 - [ ] Histórico de buscas
@@ -75,6 +75,7 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - [ ] Estatísticas de busca
 - [ ] Suporte multi-idioma
 - [ ] Auto-atualização
+- [ ] **Toast notifications** para melhor UX (substituir alerts)
 
 ### Em Consideração
 - [ ] Sincronização com serviços de nuvem
