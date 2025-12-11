@@ -1,0 +1,26 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Build directories (not dist/ - we use it for frontend source)
+dist-ssr/
+target/
+
+# Tauri build artifacts
+src-tauri/target/
+src-tauri/Cargo.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
