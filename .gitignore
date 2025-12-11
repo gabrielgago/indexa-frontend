@@ -6,8 +6,7 @@ npm-debug.log*
 # Dependency directories
 node_modules/
 
-# Build directories
-dist/
+# Build directories (not dist/ - we use it for frontend source)
 dist-ssr/
 target/
 
