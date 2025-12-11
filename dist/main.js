@@ -63,13 +63,15 @@ function renderSettings() {
             const folderItem = document.createElement('div');
             folderItem.className = 'folder-item';
             folderItem.innerHTML = `
-                <span>${folder}</span>
-                <button onclick="removeFolder(${index})">
+                <span>${escapeHtml(folder)}</span>
+                <button data-index="${index}" class="remove-folder-btn">
                     <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             `;
+            const removeBtn = folderItem.querySelector('.remove-folder-btn');
+            removeBtn.addEventListener('click', () => removeFolder(index));
             foldersList.appendChild(folderItem);
         });
     }
@@ -83,13 +85,15 @@ function renderSettings() {
             const extTag = document.createElement('div');
             extTag.className = 'extension-tag';
             extTag.innerHTML = `
-                <span>.${ext}</span>
-                <button onclick="removeExtension(${index})">
+                <span>.${escapeHtml(ext)}</span>
+                <button data-index="${index}" class="remove-ext-btn">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             `;
+            const removeBtn = extTag.querySelector('.remove-ext-btn');
+            removeBtn.addEventListener('click', () => removeExtension(index));
             extensionsList.appendChild(extTag);
         });
     }
@@ -117,10 +121,10 @@ async function addFolder() {
 }
 
 // Remove folder
-window.removeFolder = function(index) {
+function removeFolder(index) {
     currentConfig.folders.splice(index, 1);
     renderSettings();
-};
+}
 
 // Add extension
 function addExtension() {
@@ -133,10 +137,10 @@ function addExtension() {
 }
 
 // Remove extension
-window.removeExtension = function(index) {
+function removeExtension(index) {
     currentConfig.extensions.splice(index, 1);
     renderSettings();
-};
+}
 
 // Save settings
 async function saveSettings() {
