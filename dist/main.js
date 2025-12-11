@@ -234,7 +234,7 @@ function createResultCard(result) {
             <div class="result-highlight">${highlight}</div>
         </div>
         <div class="result-actions">
-            <button class="btn-view" onclick="openFile('${escapeHtml(result.path)}')">
+            <button class="btn-view" data-file-path="${escapeHtml(result.path)}">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 12S5 4 12 4C19 4 23 12 23 12S19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -244,18 +244,24 @@ function createResultCard(result) {
         </div>
     `;
     
+    // Add click handler to the button
+    const viewBtn = card.querySelector('.btn-view');
+    viewBtn.addEventListener('click', () => {
+        openFile(viewBtn.getAttribute('data-file-path'));
+    });
+    
     return card;
 }
 
 // Open file
-window.openFile = async function(path) {
+async function openFile(path) {
     try {
         await invoke('open_file', { path });
     } catch (error) {
         console.error('Error opening file:', error);
         showError('Erro ao abrir arquivo');
     }
-};
+}
 
 // Utility functions
 function escapeHtml(text) {

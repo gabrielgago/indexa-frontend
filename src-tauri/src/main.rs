@@ -164,8 +164,6 @@ fn extract_highlight(preview: &str, query: &str) -> String {
 
 #[tauri::command]
 async fn open_file(path: String) -> Result<(), String> {
-    use tauri_plugin_shell::ShellExt;
-    
     #[cfg(target_os = "windows")]
     {
         std::process::Command::new("cmd")
